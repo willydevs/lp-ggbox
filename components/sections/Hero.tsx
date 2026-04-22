@@ -18,7 +18,7 @@ export function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/bg-hero.webp"
+          src="/images/imgi_245_bg-hero.webp"
           alt=""
           fill
           priority

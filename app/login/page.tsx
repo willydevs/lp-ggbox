@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { LoginForm } from './LoginForm';
 
@@ -11,6 +12,19 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <div className="relative min-h-screen bg-background overflow-hidden flex items-center justify-center px-4">
+      {/* Background image */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/imgi_10_authbg.webp"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center opacity-30"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/90" />
+      </div>
+
       {/* Glows pulsantes */}
       <div className="login-glow-1" aria-hidden="true" />
       <div className="login-glow-2" aria-hidden="true" />

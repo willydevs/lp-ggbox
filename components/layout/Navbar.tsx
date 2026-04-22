@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button } from '@/components/ui/Button';
@@ -30,9 +31,14 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0" aria-label="GGBOX — página inicial">
-          <span className="font-display text-2xl font-black bg-primary-gradient bg-clip-text text-transparent tracking-tight">
-            GGBOX
-          </span>
+          <Image
+            src="/images/logoggbox.png"
+            alt="GGBOX"
+            width={120}
+            height={40}
+            className="h-9 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -78,9 +84,13 @@ export function Navbar() {
             <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" />
             <Dialog.Content className="fixed inset-0 z-50 flex flex-col bg-background p-6">
               <div className="flex items-center justify-between mb-8">
-                <span className="font-display text-2xl font-black bg-primary-gradient bg-clip-text text-transparent">
-                  GGBOX
-                </span>
+                <Image
+                  src="/images/logoggbox.png"
+                  alt="GGBOX"
+                  width={120}
+                  height={40}
+                  className="h-9 w-auto object-contain"
+                />
                 <Dialog.Close asChild>
                   <button
                     className="p-2 text-white/70 hover:text-white"

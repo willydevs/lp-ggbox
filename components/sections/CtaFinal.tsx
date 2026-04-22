@@ -10,6 +10,12 @@ export function CtaFinal() {
       className="relative py-28 overflow-hidden"
       aria-label="Chamada para ação final"
     >
+      {/* Background SVG */}
+      <div
+        className="absolute inset-0 -z-10 bg-no-repeat bg-center bg-cover opacity-10"
+        style={{ backgroundImage: "url('/images/imgi_246_bg-hover-cta.svg')" }}
+        aria-hidden="true"
+      />
       {/* Glow */}
       <div
         className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-900/30 via-background to-background"
