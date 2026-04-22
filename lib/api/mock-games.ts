@@ -1,0 +1,28 @@
+import type { Game } from '@/types/game';
+
+export const MOCK_GAMES: Game[] = [
+  { id: 1, name: 'God of War II', system: 'ps2', system_id: 'ps2', region: 'USA', size_label: '4.3 GB', cover_url: null, video_url: null, links: [] },
+  { id: 2, name: 'Shadow of the Colossus', system: 'ps2', system_id: 'ps2', region: 'USA', size_label: '2.7 GB', cover_url: null, video_url: null, links: [] },
+  { id: 3, name: 'Resident Evil 4', system: 'ps2', system_id: 'ps2', region: 'USA', size_label: '4.7 GB', cover_url: null, video_url: null, links: [] },
+  { id: 4, name: 'Grand Theft Auto San Andreas', system: 'ps2', system_id: 'ps2', region: 'USA', size_label: '4.7 GB', cover_url: null, video_url: null, links: [] },
+  { id: 5, name: 'Super Mario World', system: 'snes', system_id: 'snes', region: 'USA', size_label: '512 KB', cover_url: null, video_url: null, links: [] },
+  { id: 6, name: 'The Legend of Zelda: A Link to the Past', system: 'snes', system_id: 'snes', region: 'USA', size_label: '1 MB', cover_url: null, video_url: null, links: [] },
+  { id: 7, name: 'Donkey Kong Country', system: 'snes', system_id: 'snes', region: 'USA', size_label: '1 MB', cover_url: null, video_url: null, links: [] },
+  { id: 8, name: 'Sonic the Hedgehog 2', system: 'megadrive', system_id: 'megadrive', region: 'USA', size_label: '512 KB', cover_url: null, video_url: null, links: [] },
+  { id: 9, name: 'Streets of Rage 2', system: 'megadrive', system_id: 'megadrive', region: 'USA', size_label: '1 MB', cover_url: null, video_url: null, links: [] },
+  { id: 10, name: 'Mortal Kombat II', system: 'megadrive', system_id: 'megadrive', region: 'USA', size_label: '1.5 MB', cover_url: null, video_url: null, links: [] },
+  { id: 11, name: 'Pokémon FireRed', system: 'gba', system_id: 'gba', region: 'USA', size_label: '16 MB', cover_url: null, video_url: null, links: [] },
+  { id: 12, name: 'Pokémon Emerald', system: 'gba', system_id: 'gba', region: 'USA', size_label: '16 MB', cover_url: null, video_url: null, links: [] },
+  { id: 13, name: 'Mario Kart: Double Dash!!', system: 'gamecube', system_id: 'gamecube', region: 'USA', size_label: '1.4 GB', cover_url: null, video_url: null, links: [] },
+  { id: 14, name: 'Super Mario 64', system: 'n64', system_id: 'n64', region: 'USA', size_label: '64 MB', cover_url: null, video_url: null, links: [] },
+  { id: 15, name: 'The Legend of Zelda: Ocarina of Time', system: 'n64', system_id: 'n64', region: 'USA', size_label: '64 MB', cover_url: null, video_url: null, links: [] },
+  { id: 16, name: 'GoldenEye 007', system: 'n64', system_id: 'n64', region: 'USA', size_label: '64 MB', cover_url: null, video_url: null, links: [] },
+  { id: 17, name: 'Crash Bandicoot 3: Warped', system: 'psx', system_id: 'psx', region: 'USA', size_label: '500 MB', cover_url: null, video_url: null, links: [] },
+  { id: 18, name: 'Final Fantasy VII', system: 'psx', system_id: 'psx', region: 'USA', size_label: '1.4 GB', cover_url: null, video_url: null, links: [] },
+  { id: 19, name: 'Metal Gear Solid', system: 'psx', system_id: 'psx', region: 'USA', size_label: '1.2 GB', cover_url: null, video_url: null, links: [] },
+  { id: 20, name: 'Tekken 3', system: 'psx', system_id: 'psx', region: 'USA', size_label: '600 MB', cover_url: null, video_url: null, links: [] },
+  { id: 21, name: 'Gran Turismo 3', system: 'ps2', system_id: 'ps2', region: 'USA', size_label: '4.7 GB', cover_url: null, video_url: null, links: [] },
+  { id: 22, name: 'Kingdom Hearts', system: 'ps2', system_id: 'ps2', region: 'USA', size_label: '4.3 GB', cover_url: null, video_url: null, links: [] },
+  { id: 23, name: 'Devil May Cry 3', system: 'ps2', system_id: 'ps2', region: 'USA', size_label: '4.7 GB', cover_url: null, video_url: null, links: [] },
+  { id: 24, name: 'Metroid Fusion', system: 'gba', system_id: 'gba', region: 'USA', size_label: '8 MB', cover_url: null, video_url: null, links: [] },
+];
