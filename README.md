@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GGBOX — Landing Page
 
-## Getting Started
+Plataforma de jogos tipo "Netflix dos jogos". Next.js 14 + TypeScript + Tailwind + API G-Systems.
 
-First, run the development server:
+## Stack
+
+- **Next.js** 14.2 (App Router, Server Components, ISR)
+- **TypeScript** 5 (strict + noUncheckedIndexedAccess)
+- **Tailwind CSS** 3.4
+- **TanStack Query** v5
+- **Radix UI** (Accordion, Tabs, Dialog, Tooltip)
+- **Framer Motion** 11
+- **Zod** (validação de schema da API)
+- **Vercel Analytics** + Speed Insights
+
+## Setup
 
 ```bash
+npm install
+cp .env.example .env.local
+# preencha as variáveis no .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variáveis de ambiente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variável | Descrição | Obrigatória |
+|---|---|---|
+| `NEXT_PUBLIC_API_URL` | URL do G-Systems (API de jogos) | ✅ |
+| `NEXT_PUBLIC_FB_PIXEL_ID` | Facebook Pixel ID | — |
+| `NEXT_PUBLIC_GTM_ID` | Google Tag Manager ID | — |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Número WhatsApp (só dígitos) | — |
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Comando | Descrição |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento |
+| `npm run build` | Build de produção |
+| `npm start` | Servidor de produção |
+| `npm run lint` | ESLint |
+| `npm run type-check` | TypeScript sem emit |
+| `npm run format` | Prettier |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Estrutura
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/
+  layout.tsx          # Fontes, metadata base, providers, analytics
+  page.tsx            # Landing page (Server + Suspense)
+  jogos/
+    page.tsx          # Catálogo (ISR 3600)
+    [slug]/page.tsx   # Detalhe do jogo (generateMetadata dinâmico)
+  login/page.tsx      # Login com GlassCard + glow pulsante
+  api/contact/        # Route Handler de contato
+  opengraph-image.tsx # OG image dinâmica (Edge Runtime)
+  robots.ts / sitemap.ts
 
-## Deploy on Vercel
+components/
+  layout/     # Navbar, Footer, AnnouncementBar, WhatsAppFab
+  sections/   # Hero, Pricing, About, Stats, FAQ, CTA, Marquee, etc.
+  catalog/    # GameCard, GamesCatalog, FilterSidebar, SearchBar
+  ui/         # Button, Input, Badge, GlassCard, Skeleton
+  providers/  # QueryProvider, Analytics (FB Pixel, GTM)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+lib/
+  api/games.ts       # Cliente tipado com Zod + fallback mock
+  constants.ts       # Pricing, FAQ, specs, depoimentos
+  seo.ts             # JSON-LD helpers
+  analytics.ts       # Helpers de eventos (cta_click, purchase_started…)
+  utils.ts           # cn(), formatPrice()
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+hooks/
+  useDebounce.ts     # Debounce genérico
+  useIntersection.ts # IntersectionObserver
+  useCountUp.ts      # Counter animado
+
+types/
+  game.ts / product.ts / testimonial.ts
+```
+
+## API
+
+Base URL: `https://license-multijogos.vercel.app`
+
+| Endpoint | Descrição |
+|---|---|
+| `GET /api/catalog/games?system=ps4&q=...&page=1&limit=28` | Lista de jogos paginada |
+| `GET /api/catalog/packs?tier=standard` | Lista de packs |
+| `GET /api/catalog/packs/[id]/games` | Jogos de um pack |
+
+## Deploy (Vercel)
+
+```bash
+vercel --prod
+```
+
+Configure as variáveis de ambiente no painel da Vercel antes do deploy.

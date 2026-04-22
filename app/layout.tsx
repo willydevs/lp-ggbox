@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import QueryProvider from '@/components/providers/QueryProvider';
+import { FacebookPixel, GoogleTagManager } from '@/components/providers/Analytics';
 import './globals.css';
 
 const inter = Inter({
@@ -67,6 +68,8 @@ export default function RootLayout({
         </QueryProvider>
         <Analytics />
         <SpeedInsights />
+        <FacebookPixel />
+        <GoogleTagManager />
       </body>
     </html>
   );
