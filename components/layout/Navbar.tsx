@@ -10,9 +10,9 @@ import { NAV_LINKS, WHATSAPP_URL } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
 const REGIONS = [
-  { flag: '🇧🇷', name: 'Brasil', code: 'BR' },
-  { flag: '🇺🇸', name: 'Estados Unidos', code: 'US' },
-  { flag: '🇪🇸', name: 'Espanha', code: 'ES' },
+  { img: '/images/br.webp', name: 'Brasil', code: 'BR' },
+  { img: '/images/en.png', name: 'Estados Unidos', code: 'US' },
+  { img: '/images/es.png', name: 'Espanha', code: 'ES' },
 ];
 
 function RegionSelector() {
@@ -40,7 +40,7 @@ function RegionSelector() {
         aria-expanded={open}
         aria-label="Selecionar região"
       >
-        <span style={{ fontSize: '18px', lineHeight: 1 }}>{activeRegion.flag}</span>
+        <img src={activeRegion.img} alt={activeRegion.name} style={{ width: '22px', height: '16px', objectFit: 'cover', borderRadius: '2px' }} />
         {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
       </button>
 
@@ -81,7 +81,7 @@ function RegionSelector() {
                   onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
                   onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                 >
-                  <span style={{ fontSize: '18px', lineHeight: 1 }}>{region.flag}</span>
+                  <img src={region.img} alt={region.name} style={{ width: '22px', height: '16px', objectFit: 'cover', borderRadius: '2px', flexShrink: 0 }} />
                   <span style={{ color: '#ffffff', fontSize: '14px', flex: 1, textAlign: 'left' }}>
                     {region.name}{' '}
                     <span style={{ color: '#888', fontSize: '12px' }}>({region.code})</span>
