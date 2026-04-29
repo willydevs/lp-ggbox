@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { Button } from '@/components/ui/Button';
 import { NAV_LINKS, WHATSAPP_URL } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
@@ -14,6 +13,33 @@ const REGIONS = [
   { img: '/images/en.png', name: 'Estados Unidos', code: 'US' },
   { img: '/images/es.png', name: 'Espanha', code: 'ES' },
 ];
+
+function ComprarButton({ label = 'Comprar', className = '' }: { label?: string; className?: string }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={`flex items-center gap-2 text-sm font-medium text-white transition-opacity ${className}`}
+      style={{
+        backgroundImage: hovered
+          ? "url('/images/imgi_246_bg-hover-cta.svg')"
+          : "url('/images/imgi_244_grandient-btn-header.svg')",
+        backgroundSize: '100% 100%',
+        backgroundRepeat: 'no-repeat',
+        padding: '8px 20px',
+        textDecoration: 'none',
+        opacity: hovered ? 1 : 0.95,
+      }}
+    >
+      <img src="/images/imgi_27_rocket.svg" alt="" width={16} height={16} />
+      {label}
+    </a>
+  );
+}
 
 function RegionSelector() {
   const [open, setOpen] = useState(false);
@@ -163,15 +189,18 @@ export function Navbar() {
         </nav>
 
         {/* Desktop CTAs + RegionSelector */}
-        <div className="hidden lg:flex items-center gap-2">
-          <Button variant="outline" size="sm" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
-          <Button variant="cta" size="sm" asChild>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              Comprar
-            </a>
-          </Button>
+        <div className="hidden lg:flex items-center gap-3">
+          {/* Login — estilo "Entrar" da Ticto: ícone + texto, sem borda */}
+          <Link
+            href="/login"
+            className="flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white transition-colors px-2 py-1.5"
+          >
+            <img src="/images/imgi_4_icon-enter.svg" alt="" width={18} height={18} />
+            Login
+          </Link>
+
+          <ComprarButton label="Comprar" />
+
           <RegionSelector />
         </div>
 
@@ -221,14 +250,15 @@ export function Navbar() {
               </nav>
 
               <div className="flex flex-col gap-3 pt-6 border-t border-white/10">
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/login" onClick={() => setOpen(false)}>Login</Link>
-                </Button>
-                <Button variant="cta" size="lg" asChild>
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                    Comprar Agora
-                  </a>
-                </Button>
+                <Link
+                  href="/login"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-3 text-base font-medium text-white/80 hover:text-white transition-colors px-2 py-2"
+                >
+                  <img src="/images/imgi_4_icon-enter.svg" alt="" width={20} height={20} />
+                  Login
+                </Link>
+                <ComprarButton label="Comprar Agora" />
                 <div className="flex justify-center pt-2">
                   <RegionSelector />
                 </div>

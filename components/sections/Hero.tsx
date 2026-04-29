@@ -74,7 +74,7 @@ export function Hero() {
         {/* Título principal */}
         <h1
           className="font-display font-black text-white tracking-tight text-center mb-6"
-          style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 1.1 }}
+          style={{ fontSize: 'clamp(2.4rem, 4vw, 4rem)', lineHeight: 1.1 }}
         >
           Organize seus jogos digitais com mais{' '}
           <span style={{ display: 'inline-block', width: 'fit-content', background: 'linear-gradient(to right, #a855f7, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>economia</span>{' '}
