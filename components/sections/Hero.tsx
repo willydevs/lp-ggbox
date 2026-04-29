@@ -32,8 +32,11 @@ export function Hero() {
 
       {/* Glow roxo/pink */}
       <div
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-30 blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, #7C3AED 0%, #EC4899 50%, transparent 70%)' }}
+        className="absolute -top-20 left-1/2 -translate-x-1/2 w-[900px] h-[700px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(124,58,237,0.6) 0%, rgba(236,72,153,0.45) 45%, transparent 70%)',
+          filter: 'blur(40px)',
+        }}
         aria-hidden="true"
       />
 
@@ -46,11 +49,13 @@ export function Hero() {
             fontWeight: 700,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            background: 'linear-gradient(90deg, #f97316, #ec4899)',
+            display: 'inline-block',
+            background: 'linear-gradient(to right, #FF9C2B, #FF2689, #9747FF)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
             textAlign: 'center',
+            width: '100%',
             marginBottom: '1rem',
           }}
         >
@@ -63,7 +68,7 @@ export function Hero() {
           style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 1.1 }}
         >
           Organize seus jogos digitais com mais{' '}
-          <span className="bg-primary-gradient bg-clip-text text-transparent">
+          <span className="inline bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, #a855f7, #ec4899)' }}>
             economia
           </span>{' '}
           e liberdade
