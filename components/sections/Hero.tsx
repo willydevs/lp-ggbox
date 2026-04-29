@@ -30,12 +30,21 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-background" />
       </div>
 
-      {/* Glow roxo/pink */}
+      {/* Glow esquerdo/baixo */}
       <div
-        className="absolute -top-20 left-1/2 -translate-x-1/2 w-[900px] h-[700px] rounded-full pointer-events-none"
+        className="absolute -bottom-24 -left-24 w-[700px] h-[700px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(124,58,237,0.6) 0%, rgba(236,72,153,0.45) 45%, transparent 70%)',
-          filter: 'blur(40px)',
+          background: 'radial-gradient(circle, rgba(124,58,237,0.55) 0%, rgba(236,72,153,0.3) 50%, transparent 75%)',
+          filter: 'blur(80px)',
+        }}
+        aria-hidden="true"
+      />
+      {/* Glow central sutil */}
+      <div
+        className="absolute -top-12 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%)',
+          filter: 'blur(60px)',
         }}
         aria-hidden="true"
       />
@@ -43,23 +52,23 @@ export function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-32 pb-20">
 
         {/* Super-título colorido */}
-        <p
-          style={{
-            fontSize: '0.85rem',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            display: 'inline-block',
-            background: 'linear-gradient(to right, #FF9C2B, #FF2689, #9747FF)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            textAlign: 'center',
-            width: '100%',
-            marginBottom: '1rem',
-          }}
-        >
-          O GGBOX É MAIS SIMPLES QUE QUALQUER SISTEMA
+        <p style={{ textAlign: 'center', marginBottom: '1rem' }}>
+          <span
+            style={{
+              display: 'inline-block',
+              width: 'fit-content',
+              background: 'linear-gradient(to right, #FF9C2B, #FF2689, #9747FF)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontSize: '13px',
+              fontWeight: 700,
+              letterSpacing: '0.7px',
+              textTransform: 'uppercase',
+            }}
+          >
+            O GGBOX É MAIS SIMPLES QUE QUALQUER SISTEMA
+          </span>
         </p>
 
         {/* Título principal */}
@@ -68,9 +77,7 @@ export function Hero() {
           style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 1.1 }}
         >
           Organize seus jogos digitais com mais{' '}
-          <span className="inline bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, #a855f7, #ec4899)' }}>
-            economia
-          </span>{' '}
+          <span style={{ display: 'inline-block', width: 'fit-content', background: 'linear-gradient(to right, #a855f7, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>economia</span>{' '}
           e liberdade
         </h1>
 
