@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Zap } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
+import { ArrowRight } from 'lucide-react';
 import { WHATSAPP_URL } from '@/lib/constants';
 import { HeroVideo } from './HeroVideo';
 
@@ -40,36 +38,108 @@ export function Hero() {
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-32 pb-20">
-        <Badge variant="primary" className="mb-6">
-          <Zap size={12} />
-          NOVA GERAÇÃO DISPONÍVEL
-        </Badge>
 
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05] mb-6">
-          Bem-vindo à plataforma que reúne os{' '}
+        {/* Super-título colorido */}
+        <p
+          style={{
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            background: 'linear-gradient(90deg, #f97316, #ec4899)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textAlign: 'center',
+            marginBottom: '1rem',
+          }}
+        >
+          O GGBOX É MAIS SIMPLES QUE QUALQUER SISTEMA
+        </p>
+
+        {/* Título principal */}
+        <h1
+          className="font-display font-black text-white tracking-tight text-center mb-6"
+          style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 1.1 }}
+        >
+          Organize seus jogos digitais com mais{' '}
           <span className="bg-primary-gradient bg-clip-text text-transparent">
-            melhores jogos
+            economia
           </span>{' '}
-          em um só lugar.
+          e liberdade
         </h1>
 
-        <p className="text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Transforme seu setup em uma máquina do tempo. A coleção mais completa, organizada e premium que você já viu. Nostalgia com performance bruta.
+        {/* Subtítulo */}
+        <p
+          style={{
+            fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+            color: 'rgba(255, 255, 255, 0.75)',
+            textAlign: 'center',
+            maxWidth: '600px',
+            margin: '0 auto 2.5rem auto',
+            lineHeight: 1.6,
+          }}
+        >
+          Uma plataforma criada por um gamer para outro gamer. Sem mensalidade, você só paga uma única vez e joga o que quiser.
         </p>
 
         {/* Botões de ação */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-          <Button variant="cta" size="lg" asChild>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              GARANTIR ACESSO AGORA
-              <ArrowRight size={18} />
-            </a>
-          </Button>
-          <Button variant="outline" size="lg" asChild>
-            <Link href="/jogos">
-              VER LISTA DE JOGOS
-            </Link>
-          </Button>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '1rem',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            marginTop: '2rem',
+          }}
+        >
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem',
+              padding: '0.875rem 2rem',
+              borderRadius: '9999px',
+              fontWeight: 700,
+              fontSize: '0.95rem',
+              background: 'linear-gradient(135deg, #f97316, #ec4899)',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              textDecoration: 'none',
+            }}
+          >
+            GARANTIR ACESSO AGORA
+            <ArrowRight size={18} />
+          </a>
+
+          <Link
+            href="/jogos"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '0.875rem 2rem',
+              borderRadius: '9999px',
+              fontWeight: 700,
+              fontSize: '0.95rem',
+              background: 'transparent',
+              color: 'white',
+              border: '2px solid rgba(255, 255, 255, 0.4)',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              textDecoration: 'none',
+            }}
+          >
+            VER LISTA DE JOGOS
+          </Link>
         </div>
 
         {/* Vídeo YouTube */}
