@@ -1,13 +1,118 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button } from '@/components/ui/Button';
 import { NAV_LINKS, WHATSAPP_URL } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+
+const REGIONS = [
+  { flag: '🇧🇷', name: 'Brasil', code: 'BR' },
+  { flag: '🇺🇸', name: 'Estados Unidos', code: 'US' },
+  { flag: '🇪🇸', name: 'Espanha', code: 'ES' },
+];
+
+function RegionSelector() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('BR');
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, []);
+
+  const activeRegion = REGIONS.find(r => r.code === active)!;
+
+  return (
+    <div ref={ref} style={{ position: 'relative' }}>
+      <button
+        onClick={() => setOpen(v => !v)}
+        className="flex items-center gap-1.5 px-2 py-1.5 text-sm text-white/80 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
+        aria-expanded={open}
+        aria-label="Selecionar região"
+      >
+        <span style={{ fontSize: '18px', lineHeight: 1 }}>{activeRegion.flag}</span>
+        {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+      </button>
+
+      {open && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 'calc(100% + 10px)',
+            right: 0,
+            background: '#1c1c1e',
+            borderRadius: '12px',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+            minWidth: '220px',
+            zIndex: 100,
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{ padding: '14px 16px 8px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+            <span style={{ color: '#ffffff', fontWeight: 600, fontSize: '14px' }}>Regiões</span>
+          </div>
+
+          <ul style={{ listStyle: 'none', margin: 0, padding: '6px 0' }}>
+            {REGIONS.map(region => (
+              <li key={region.code}>
+                <button
+                  onClick={() => { setActive(region.code); setOpen(false); }}
+                  style={{
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    padding: '10px 16px',
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'background 0.15s',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
+                  onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+                >
+                  <span style={{ fontSize: '18px', lineHeight: 1 }}>{region.flag}</span>
+                  <span style={{ color: '#ffffff', fontSize: '14px', flex: 1, textAlign: 'left' }}>
+                    {region.name}{' '}
+                    <span style={{ color: '#888', fontSize: '12px' }}>({region.code})</span>
+                  </span>
+                  {/* Toggle circle */}
+                  <span
+                    style={{
+                      width: '18px',
+                      height: '18px',
+                      borderRadius: '50%',
+                      flexShrink: 0,
+                      background: active === region.code ? '#7c3aed' : 'transparent',
+                      border: active === region.code ? 'none' : '1.5px solid rgba(255,255,255,0.3)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    {active === region.code && (
+                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fff', display: 'block' }} />
+                    )}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -57,7 +162,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop CTAs */}
+        {/* Desktop CTAs + RegionSelector */}
         <div className="hidden lg:flex items-center gap-2">
           <Button variant="outline" size="sm" asChild>
             <Link href="/login">Login</Link>
@@ -67,6 +172,7 @@ export function Navbar() {
               Comprar
             </a>
           </Button>
+          <RegionSelector />
         </div>
 
         {/* Mobile hamburger */}
@@ -123,6 +229,9 @@ export function Navbar() {
                     Comprar Agora
                   </a>
                 </Button>
+                <div className="flex justify-center pt-2">
+                  <RegionSelector />
+                </div>
               </div>
             </Dialog.Content>
           </Dialog.Portal>

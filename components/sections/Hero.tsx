@@ -4,6 +4,7 @@ import { ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { WHATSAPP_URL } from '@/lib/constants';
+import { HeroVideo } from './HeroVideo';
 
 const BLUR_PLACEHOLDER =
   'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AJQAB/9k=';
@@ -56,7 +57,8 @@ export function Hero() {
           Transforme seu setup em uma máquina do tempo. A coleção mais completa, organizada e premium que você já viu. Nostalgia com performance bruta.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+        {/* Botões de ação */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
           <Button variant="cta" size="lg" asChild>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               GARANTIR ACESSO AGORA
@@ -70,8 +72,11 @@ export function Hero() {
           </Button>
         </div>
 
+        {/* Vídeo YouTube */}
+        <HeroVideo />
+
         {/* Mini stats */}
-        <div className="flex flex-wrap justify-center gap-0 divide-x divide-white/10">
+        <div className="flex flex-wrap justify-center gap-0 divide-x divide-white/10 mt-14">
           {[
             { value: '+250k', label: 'jogos' },
             { value: '+143', label: 'sistemas' },
